@@ -1,0 +1,11 @@
+@PACKAGE_INIT@
+
+set(carve_INCLUDE_DIRS "@CMAKE_INSTALL_PREFIX@/include")
+set(carve_LIBRARIES carve)
+
+include(CMakeFindDependencyMacro)
+find_dependency(OpenGL)
+find_dependency(GLUT)
+find_dependency(GLEW)
+
+include("${CMAKE_CURRENT_LIST_DIR}/carveTargets.cmake")

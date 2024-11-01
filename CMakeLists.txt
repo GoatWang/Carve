@@ -8,6 +8,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
 set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
+# ADDED: https://chatgpt.com/share/67249412-2f04-8007-9690-b07c845b950e
+set(CMAKE_BUILD_WITH_INSTALL_RPATH ON)
+set(CMAKE_MACOSX_RPATH ON)
+
 set(carve_VERSION_MAJOR 2)
 set(carve_VERSION_MINOR 0)
 set(carve_VERSION_PATCH 0a)
@@ -177,3 +181,44 @@ include(CTest)
 if(BUILD_TESTING)
   ENABLE_TESTING()
 endif(BUILD_TESTING)
+
+## The following are added to allow use of `find_package(carve REQUIRED)` and `target_link_libraries(your_target carve::carve)`
+include(CMakePackageConfigHelpers)
+
+configure_package_config_file(
+    "${CMAKE_CURRENT_SOURCE_DIR}/cmake/carveConfig.cmake.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/carveConfig.cmake"
+    INSTALL_DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/carve"
+)
+
+write_basic_package_version_file(
+    "${CMAKE_CURRENT_BINARY_DIR}/carveConfigVersion.cmake"
+    VERSION ${CARVE_VERSION}
+    COMPATIBILITY AnyNewerVersion
+)
+
+install(
+    FILES "${CMAKE_CURRENT_BINARY_DIR}/carveConfig.cmake"
+          "${CMAKE_CURRENT_BINARY_DIR}/carveConfigVersion.cmake"
+    DESTINATION lib/cmake/carve
+)
+
+# install `build/include/carve/config.h` in `/usr/local/include/carve`
+install(DIRECTORY ${CMAKE_BINARY_DIR}/include/carve
+        DESTINATION ${CMAKE_INSTALL_PREFIX}/include)      
+        
+# Install targets for the library
+install(TARGETS carve
+        EXPORT carveTargets
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib
+        RUNTIME DESTINATION bin)
+
+install(EXPORT carveTargets
+        NAMESPACE carve::
+        DESTINATION lib/cmake/carve)
+
+set(carve_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/include" "${CMAKE_BINARY_DIR}/include")
+include_directories(${carve_INCLUDE_DIRS})
+message(STATUS "carve_INCLUDE_DIRS: ${carve_INCLUDE_DIRS}")
+

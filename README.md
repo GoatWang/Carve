@@ -50,9 +50,80 @@ git clone https://github.com/VTREEM/Carve
     virtual void length(size_t len) { if (l != nullptr) l->curr().second.reserve(len); }
     ```
 
+6. For Installing Carve in `CMakeLists.txt` (Change A Lot, please compare line by line)
+```
+set(carve_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/include" "${CMAKE_BINARY_DIR}/include")
+include_directories(${carve_INCLUDE_DIRS})
+message(STATUS "carve_INCLUDE_DIRS: ${carve_INCLUDE_DIRS}")
+```
+
+7. in `/Users/wanghsuanchung/Projects/MRDVS/temp/Carve/include/CMakeLists.txt`
+```cmakelist.txt
+# change from 
+    # PATTERN "*.hpp"
+# to
+    PATTERN "*.hpp"    
+    PATTERN "*.h"
+```
+
 # Compile
 ```
 cd build
 cmake ..
 make
+```
+
+
+# Asking CMakeLists.txt Prompt
+```
+find ../ -name CMakeLists.txt -exec sh -c 'echo "== {} =="; cat {}' \; > prompt.txt
+```
+
+# Remove Care Installation
+```
+sudo rm -rf /usr/local/lib/libcarve*
+sudo rm -rf /usr/local/include/carve
+sudo rm -rf /usr/local/lib/cmake/carve
+```
+
+
+# How to includ Carve in your own project (Example CMakeLists.txt)
+```
+# Minimum CMake version required
+cmake_minimum_required(VERSION 3.10)
+
+# Project name and language
+project(MachiningSimulation)
+
+# Specify the C++ standard
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Set RPATH settings
+set(CMAKE_SKIP_BUILD_RPATH FALSE)
+set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
+set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib:/usr/local/lib")
+set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+
+# Locate the carve library and include directories
+find_package(Boost REQUIRED)
+find_package(carve REQUIRED)
+
+# Specify include directories
+include_directories(${Boost_INCLUDE_DIRS})
+include_directories(${carve_INCLUDE_DIRS})
+# message(STATUS "Boost include directories: ${Boost_INCLUDE_DIRS}")
+# message(STATUS "Include directories: ${carve_INCLUDE_DIRS}")
+
+# Add the executable for the main source file
+# add_executable(main src/main.cpp)
+add_executable(test_carve src/test_carve.cpp)
+
+# Link the carve library
+# target_link_libraries(main PRIVATE carve::carve)
+target_link_libraries(test_carve PRIVATE carve::carve)
+
+# Optional: Add debugging and optimization flags
+set(CMAKE_CXX_FLAGS_DEBUG "-g")
+set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 ```
