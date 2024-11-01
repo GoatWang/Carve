@@ -157,7 +157,7 @@ namespace {
 
 
   struct Graph {
-    typedef std::unordered_map<carve::mesh::MeshSet<3>::vertex_t *, GraphEdges> graph_t;
+    typedef std_carve::unordered_map<carve::mesh::MeshSet<3>::vertex_t *, GraphEdges> graph_t;
 
     graph_t graph;
 

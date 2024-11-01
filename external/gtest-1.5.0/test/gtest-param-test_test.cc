@@ -66,7 +66,7 @@ using ::testing::ValuesIn;
 using ::testing::Combine;
 using ::std::tr1::get;
 using ::std::tr1::make_tuple;
-using ::std::tr1::tuple;
+using ::std::tuple;
 #endif  // GTEST_HAS_COMBINE
 
 using ::testing::internal::ParamGenerator;

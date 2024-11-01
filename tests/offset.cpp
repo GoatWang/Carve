@@ -83,7 +83,7 @@ struct EdgePlane {
   carve::geom3d::Vector base, dir, norm;
 };
 
-typedef std::unordered_map<const carve::poly::Edge *, EdgePlane, carve::poly::hash_edge_ptr> EPMap;
+typedef std_carve::unordered_map<const carve::poly::Edge *, EdgePlane, carve::poly::hash_edge_ptr> EPMap;
 
 void makeEdgePlanes(const carve::poly::Polyhedron *poly, EPMap &edge_planes) {
 #if defined(UNORDERED_COLLECTIONS_SUPPORT_RESIZE)

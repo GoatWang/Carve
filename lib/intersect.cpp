@@ -1223,7 +1223,7 @@ static void checkFaceLoopIntegrity(carve::csg::FaceLoopList &fll) {
   static carve::TimingName FUNC_NAME("CSG::checkFaceLoopIntegrity()");
   carve::TimingBlock block(FUNC_NAME);
 
-  std::unordered_map<carve::csg::V2, int> counts;
+  std_carve::unordered_map<carve::csg::V2, int> counts;
   for (carve::csg::FaceLoop *fl = fll.head; fl; fl = fl->next) {
     std::vector<carve::mesh::MeshSet<3>::vertex_t *> &loop = (fl->vertices);
     carve::mesh::MeshSet<3>::vertex_t *v1, *v2;
@@ -1238,7 +1238,7 @@ static void checkFaceLoopIntegrity(carve::csg::FaceLoopList &fll) {
       v1 = v2;
     }
   }
-  for (std::unordered_map<carve::csg::V2, int>::const_iterator
+  for (std_carve::unordered_map<carve::csg::V2, int>::const_iterator
          x = counts.begin(), xe = counts.end(); x != xe; ++x) {
     if ((*x).second) {
       std::cerr << "FACE LOOP ERROR: " << (*x).first.first << "-" << (*x).first.second << " : " << (*x).second << std::endl;

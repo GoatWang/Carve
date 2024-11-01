@@ -279,8 +279,8 @@ namespace carve {
 
 
 
-      typedef std::unordered_map<edge_t *, EdgeInfo *> edge_info_map_t;
-      std::unordered_map<edge_t *, EdgeInfo *> edge_info;
+      typedef std_carve::unordered_map<edge_t *, EdgeInfo *> edge_info_map_t;
+      std_carve::unordered_map<edge_t *, EdgeInfo *> edge_info;
 
 
 
@@ -316,7 +316,7 @@ namespace carve {
       void updateEdgeFlipHeap(std::vector<EdgeInfo *> &edge_heap,
                               edge_t *edge,
                               const FlippableBase &flipper) {
-        std::unordered_map<edge_t *, EdgeInfo *>::const_iterator i = edge_info.find(edge);
+        std_carve::unordered_map<edge_t *, EdgeInfo *>::const_iterator i = edge_info.find(edge);
         CARVE_ASSERT(i != edge_info.end());
         EdgeInfo *e = (*i).second;
 
@@ -680,7 +680,7 @@ namespace carve {
         size_t n_mods = 0;
 
         std::vector<EdgeInfo *> edge_heap;
-        std::unordered_map<vertex_t *, std::set<EdgeInfo *> > vert_to_edges;
+        std_carve::unordered_map<vertex_t *, std::set<EdgeInfo *> > vert_to_edges;
 
         edge_heap.reserve(edge_info.size());
 
@@ -865,7 +865,7 @@ namespace carve {
 
 
       size_t mergeCoplanarFaces(mesh_t *mesh, double min_normal_angle) {
-        std::unordered_set<edge_t *> coplanar_face_edges;
+        std_carve::unordered_set<edge_t *> coplanar_face_edges;
         double min_dp = cos(min_normal_angle);
         size_t n_merge = 0;
 
@@ -1221,10 +1221,10 @@ namespace carve {
         double grid = 0.0;
         if (log2_grid >= std::numeric_limits<double>::min_exponent) grid = pow(2.0, (double)log2_grid);
 
-        typedef std::unordered_map<face_t *, uint8_t> axis_influence_map_t;
+        typedef std_carve::unordered_map<face_t *, uint8_t> axis_influence_map_t;
         axis_influence_map_t axis_influence;
 
-        typedef std::unordered_map<face_t *, std::set<face_t *> > interaction_graph_t;
+        typedef std_carve::unordered_map<face_t *, std::set<face_t *> > interaction_graph_t;
         interaction_graph_t interacting_faces;
 
         for (size_t m = 0; m < meshset->meshes.size(); ++m) {
@@ -1236,7 +1236,7 @@ namespace carve {
         }
 
         std::map<vertex_t *, std::list<carve::geom::plane<3> > > non_axis_vertices;
-        std::unordered_map<vertex_t *, uint8_t> vertex_constraints;
+        std_carve::unordered_map<vertex_t *, uint8_t> vertex_constraints;
 
         for (axis_influence_map_t::iterator i = axis_influence.begin(); i != axis_influence.end(); ++i) {
           face_t *face = (*i).first;
@@ -1512,7 +1512,7 @@ namespace carve {
       };
 
       void selfIntersectionAwareQuantize(meshset_t *meshset, int base, int n_dp) {
-        typedef std::unordered_map<vertex_t *, quantization_info_t> vfsmap_t;
+        typedef std_carve::unordered_map<vertex_t *, quantization_info_t> vfsmap_t;
 
         vfsmap_t vertex_qinfo;
 

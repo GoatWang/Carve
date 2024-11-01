@@ -70,7 +70,7 @@ namespace carve {
     public:
       static void collectFaceVertices(std::vector<face_t > &faces,
                                       std::vector<vertex_t > &vertices,
-                                      std::unordered_map<const vertex_t *, const vertex_t *> &vmap);
+                                      std_carve::unordered_map<const vertex_t *, const vertex_t *> &vmap);
 
       static void collectFaceVertices(std::vector<face_t > &faces,
                                       std::vector<vertex_t > &vertices);

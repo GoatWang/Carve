@@ -6,7 +6,7 @@
 /* Define if using boost collections. */
 #undef HAVE_BOOST_UNORDERED_COLLECTIONS
 
-/* Define if std::unordered_map and std::unordered_set are supported by your
+/* Define if std_carve::unordered_map and std_carve::unordered_set are supported by your
    compiler. */
 #undef HAVE_STD_UNORDERED_COLLECTIONS
 

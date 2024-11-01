@@ -22,7 +22,7 @@
 
 #include <functional>
 
-namespace std {
+namespace std_carve {
   template <typename Key, typename T, typename Hash = boost::hash<Key>,
             typename Pred = std::equal_to<Key> >
   class unordered_map : public boost::unordered_map<Key, T, Hash, Pred> {

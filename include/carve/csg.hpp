@@ -167,7 +167,7 @@ namespace carve {
 
     private:
       typedef carve::geom::RTreeNode<3, carve::mesh::Face<3> *> face_rtree_t;
-      typedef std::unordered_map<carve::mesh::Face<3> *, std::vector<carve::mesh::Face<3> *> > face_pairs_t;
+      typedef std_carve::unordered_map<carve::mesh::Face<3> *, std::vector<carve::mesh::Face<3> *> > face_pairs_t;
 
       /// The computed intersection data.
       Intersections intersections;

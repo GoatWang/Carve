@@ -90,7 +90,7 @@ using ::testing::Combine;
 // PreCalculatedPrimeTable disabled. We do this by defining fixture which will
 // accept different combinations of parameters for instantiating a
 // HybridPrimeTable instance.
-class PrimeTableTest : public TestWithParam< ::std::tr1::tuple<bool, int> > {
+class PrimeTableTest : public TestWithParam< ::std::tuple<bool, int> > {
  protected:
   virtual void SetUp() {
     // This can be written as

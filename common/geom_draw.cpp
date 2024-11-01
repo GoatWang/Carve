@@ -672,7 +672,7 @@ void drawEdges(carve::mesh::Mesh<3> *mesh, double alpha, bool draw_edgeconn) {
   }
   glEnd();
 
-  std::unordered_map<std::pair<const carve::mesh::Vertex<3> *, const carve::mesh::Vertex<3> *>, int> colour;
+  std_carve::unordered_map<std::pair<const carve::mesh::Vertex<3> *, const carve::mesh::Vertex<3> *>, int> colour;
 
   if (draw_edgeconn) {
     for (size_t i = 0, l = mesh->closed_edges.size(); i != l; ++i) {

@@ -215,7 +215,7 @@ namespace carve {
       }
 
       std::vector<mesh::Face<3> *> mesh_faces;
-      std::unordered_map<const mesh::Face<3> *, size_t> face_map;
+      std_carve::unordered_map<const mesh::Face<3> *, size_t> face_map;
       {
         std::vector<mesh::Vertex<3> *> vert_ptrs;
         for (size_t i = 0; i < faces.size(); ++i) {
@@ -239,7 +239,7 @@ namespace carve {
       manifold_is_closed.resize(meshset->meshes.size());
       manifold_is_negative.resize(meshset->meshes.size());
 
-      std::unordered_map<std::pair<size_t, size_t>, std::list<mesh::Edge<3> *> > edge_map;
+      std_carve::unordered_map<std::pair<size_t, size_t>, std::list<mesh::Edge<3> *> > edge_map;
 
       if (meshset->vertex_storage.size()) {
         mesh::Vertex<3> *Vbase = &meshset->vertex_storage[0];
@@ -259,7 +259,7 @@ namespace carve {
       }
 
       size_t n_edges = 0;
-      for (std::unordered_map<std::pair<size_t, size_t>, std::list<mesh::Edge<3> *> >::iterator i = edge_map.begin(); i != edge_map.end(); ++i) {
+      for (std_carve::unordered_map<std::pair<size_t, size_t>, std::list<mesh::Edge<3> *> >::iterator i = edge_map.begin(); i != edge_map.end(); ++i) {
         if ((*i).first.first < (*i).first.second || edge_map.find(std::make_pair((*i).first.second, (*i).first.first)) == edge_map.end()) {
           n_edges++;
         }
@@ -267,7 +267,7 @@ namespace carve {
 
       edges.clear();
       edges.reserve(n_edges);
-      for (std::unordered_map<std::pair<size_t, size_t>, std::list<mesh::Edge<3> *> >::iterator i = edge_map.begin(); i != edge_map.end(); ++i) {
+      for (std_carve::unordered_map<std::pair<size_t, size_t>, std::list<mesh::Edge<3> *> >::iterator i = edge_map.begin(); i != edge_map.end(); ++i) {
         if ((*i).first.first < (*i).first.second || edge_map.find(std::make_pair((*i).first.second, (*i).first.first)) == edge_map.end()) {
           edges.push_back(edge_t(&vertices[(*i).first.first], &vertices[(*i).first.second], this));
         }
@@ -614,7 +614,7 @@ namespace carve {
 
     void Polyhedron::collectFaceVertices(std::vector<face_t> &faces,
                                          std::vector<vertex_t> &vertices,
-                                         std::unordered_map<const vertex_t *, const vertex_t *> &vmap) {
+                                         std_carve::unordered_map<const vertex_t *, const vertex_t *> &vmap) {
       // Given a set of faces, copy all referenced vertices into a
       // single vertex array and update the faces to point into that
       // array. On exit, vmap contains a mapping from old pointer to
@@ -633,7 +633,7 @@ namespace carve {
 
       vertices.reserve(vmap.size());
 
-      for (std::unordered_map<const vertex_t *, const vertex_t *>::iterator i = vmap.begin(),
+      for (std_carve::unordered_map<const vertex_t *, const vertex_t *>::iterator i = vmap.begin(),
              e = vmap.end();
            i != e;
            ++i) {
@@ -654,7 +654,7 @@ namespace carve {
 
     void Polyhedron::collectFaceVertices(std::vector<face_t> &faces,
                                          std::vector<vertex_t> &vertices) {
-      std::unordered_map<const vertex_t *, const vertex_t *> vmap;
+      std_carve::unordered_map<const vertex_t *, const vertex_t *> vmap;
       collectFaceVertices(faces, vertices, vmap);
     }
 

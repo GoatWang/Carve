@@ -409,7 +409,7 @@ namespace carve {
       template<typename iter_t>
       Face *create(iter_t beg, iter_t end, bool reversed) const;
 
-      Face *clone(const vertex_t *old_base, vertex_t *new_base, std::unordered_map<const edge_t *, edge_t *> &edge_map) const;
+      Face *clone(const vertex_t *old_base, vertex_t *new_base, std_carve::unordered_map<const edge_t *, edge_t *> &edge_map) const;
 
       void remove() {
         edge_t *e = edge;
@@ -491,8 +491,8 @@ namespace carve {
 
         typedef std::pair<const vertex_t *, const vertex_t *> vpair_t;
         typedef std::list<edge_t *> edgelist_t;
-        typedef std::unordered_map<vpair_t, edgelist_t, carve::mesh::hash_vertex_pair> edge_map_t;
-        typedef std::unordered_map<const vertex_t *, std::set<const vertex_t *> > edge_graph_t;
+        typedef std_carve::unordered_map<vpair_t, edgelist_t, carve::mesh::hash_vertex_pair> edge_map_t;
+        typedef std_carve::unordered_map<const vertex_t *, std::set<const vertex_t *> > edge_graph_t;
 
         MeshOptions opts;
 

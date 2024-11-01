@@ -277,8 +277,8 @@ namespace carve {
         }
       };
 
-      typedef std::unordered_map<const meshset_t::vertex_t *, attr_t> attrvmap_t;
-      typedef std::unordered_map<key_t, attr_t, key_hash> attrmap_t;
+      typedef std_carve::unordered_map<const meshset_t::vertex_t *, attr_t> attrvmap_t;
+      typedef std_carve::unordered_map<key_t, attr_t, key_hash> attrmap_t;
 
       attrmap_t attrs;
 
@@ -361,8 +361,8 @@ namespace carve {
         }
       };
 
-      typedef std::unordered_map<key_t, attr_t, key_hash> attrmap_t;
-      typedef std::unordered_map<vpair_t, key_t, vpair_hash> edgedivmap_t;
+      typedef std_carve::unordered_map<key_t, attr_t, key_hash> attrmap_t;
+      typedef std_carve::unordered_map<vpair_t, key_t, vpair_hash> edgedivmap_t;
 
       attrmap_t attrs;
       edgedivmap_t edgediv;
@@ -471,7 +471,7 @@ namespace carve {
         }
       };
 
-      typedef std::unordered_map<key_t, attr_t, key_hash> attrmap_t;
+      typedef std_carve::unordered_map<key_t, attr_t, key_hash> attrmap_t;
 
       attrmap_t attrs;
       

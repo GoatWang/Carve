@@ -83,7 +83,7 @@ namespace carve {
         }
       };
 
-      typedef std::unordered_map<ClassificationKey, ClassificationData, hash_classification> Classification;
+      typedef std_carve::unordered_map<ClassificationKey, ClassificationData, hash_classification> Classification;
 
 
       struct hash_group_ptr {
@@ -101,8 +101,8 @@ namespace carve {
         }
       };
 
-      typedef std::unordered_map<std::pair<size_t, const carve::mesh::MeshSet<3>::vertex_t *>,
-                                 std::unordered_set<FaceLoopGroup *, hash_group_ptr>,
+      typedef std_carve::unordered_map<std::pair<size_t, const carve::mesh::MeshSet<3>::vertex_t *>,
+                                 std_carve::unordered_set<FaceLoopGroup *, hash_group_ptr>,
                                  hash_perim_key> PerimMap;
 
 
@@ -113,8 +113,8 @@ namespace carve {
         }
       };
 
-      typedef std::unordered_map<const FaceLoopGroup *,
-                                 std::unordered_set<std::pair<int, const FaceLoopGroup *>, hash_group_pair>,
+      typedef std_carve::unordered_map<const FaceLoopGroup *,
+                                 std_carve::unordered_set<std::pair<int, const FaceLoopGroup *>, hash_group_pair>,
                                  hash_group_ptr> CandidateOnMap;
 
 

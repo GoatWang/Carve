@@ -134,7 +134,7 @@ int main(int argc, char **argv) {
   std::cerr << "      : " << b_sliced.size() << " connected components from b" << std::endl;
   std::cerr << "      : " << shared_edges.size() << " edges in the line of intersection" << std::endl;
 
-  typedef std::unordered_map<
+  typedef std_carve::unordered_map<
   const carve::mesh::MeshSet<3>::vertex_t *,
     std::set<const carve::mesh::MeshSet<3>::vertex_t *> > VVSMap;
 

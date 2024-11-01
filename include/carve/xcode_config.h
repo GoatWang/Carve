@@ -5,7 +5,7 @@
 // Define if using gnu libstdc++.
 #define HAVE_LIBSTDCPP_UNORDERED_COLLECTIONS 
 
-// Define if std::unordered_map and std::unordered_set are supported by your compiler.
+// Define if std_carve::unordered_map and std_carve::unordered_set are supported by your compiler.
 // #define HAVE_STD_UNORDERED_COLLECTIONS
 
 // Define if using std::tr1 collections.

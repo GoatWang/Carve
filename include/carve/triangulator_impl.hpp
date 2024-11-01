@@ -370,7 +370,7 @@ namespace carve {
 
 
       struct tri_pairs_t {
-        typedef std::unordered_map<vert_edge_t, tri_pair_t *, hash_vert_edge_t> storage_t;
+        typedef std_carve::unordered_map<vert_edge_t, tri_pair_t *, hash_vert_edge_t> storage_t;
         storage_t storage;
 
         tri_pairs_t() : storage() {
