@@ -1,4 +1,14 @@
-# Download
+# Introduction
+This repo is cloned from [VTREEM/Carve](https://github.com/VTREEM/Carve). Since the repo is originated at 2002, the code is not compatible with modern C++ standards. This repo aims to make the code compatible with modern C++ standards. Some warnings related to iterator, which may be depreciated in the future, are still exist. This repo is tested to be compiled with c++17 and cmake on macOS with m3 chip.
+
+# Compile
+```
+cd build
+cmake ..
+make
+```
+
+# Modification Record
 ```
 git clone https://github.com/VTREEM/Carve
 ```
@@ -66,20 +76,13 @@ message(STATUS "carve_INCLUDE_DIRS: ${carve_INCLUDE_DIRS}")
     PATTERN "*.h"
 ```
 
-# Compile
-```
-cd build
-cmake ..
-make
-```
-
-
-# Asking CMakeLists.txt Prompt
+# Tools For Debugging
+## Asking CMakeLists.txt Prompt
 ```
 find ../ -name CMakeLists.txt -exec sh -c 'echo "== {} =="; cat {}' \; > prompt.txt
 ```
 
-# Remove Care Installation
+## Remove Care Installation
 ```
 sudo rm -rf /usr/local/lib/libcarve*
 sudo rm -rf /usr/local/include/carve
